@@ -39,8 +39,8 @@ We trained and compared four state-of-the-art deep learning models for automated
 
 | Name | Role |
 |------|------|
-| **Prathyusha Pentam** | Model Training, Architectures, Results |
 | **Dimple Alekya Basimi** | Introduction, Dataset, Objectives |
+| **Prathyusha Pentam** | Model Training, Architectures, Results |
 | **Gowtham Kamle** | KAN, Grad-CAM, Web Application |
 
 **Advisor:** Dr. S. M. Mallikarjunaiah
