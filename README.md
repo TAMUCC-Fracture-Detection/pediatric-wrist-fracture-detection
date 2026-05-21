@@ -44,6 +44,7 @@ We trained and compared four state-of-the-art deep learning models for automated
 | **Gowtham Kamle** | KAN, Grad-CAM, Web Application |
 
 ****Advisor:** Dr. S. M. Mallikarjunaiah**
+
 **Institution:** Department of Mathematics and Statistics
 Texas A&M University – Corpus Christi
 
