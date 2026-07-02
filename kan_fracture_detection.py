@@ -1,4 +1,10 @@
 import streamlit as st
+import subprocess
+import sys
+subprocess.run([sys.executable, "-m", 
+"pip", "install", 
+"opencv-python-headless"], 
+check=True)
 import cv2
 import numpy as np
 from PIL import Image
