@@ -5,7 +5,18 @@ import time
 import tempfile
 import os
 from pathlib import Path
-import cv2
+
+try:
+    import cv2
+except ImportError:
+    import subprocess
+    import sys
+    subprocess.run([
+        sys.executable, "-m", "pip",
+        "install", "opencv-python-headless"
+    ], check=True)
+    import cv2
+
 from ultralytics import YOLO
 
 # ── Page Config ───────────────────────────────────────────────
@@ -15,7 +26,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
 # ── CSS ───────────────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -263,7 +273,6 @@ st.markdown(
     "Trained on GRAZPEDWRI-DX — 20,327 X-ray images | "
     "9 pathological classes | NVIDIA H100 GPU at TAMUCC CREST HPC"
 )
-
 st.markdown("""
 <div style="background:#1C1A12;border:2px solid #F97316;border-radius:10px;
 padding:14px 20px;margin:10px 0;">
@@ -274,7 +283,6 @@ Precision improved from 0.700 to 0.724 — Best Precision among ALL models!
 </div>
 """, unsafe_allow_html=True)
 
-# Load model
 model = load_model()
 if model is None:
     st.error("❌ KAN-YOLOv8 model file best.pt not found!")
@@ -310,7 +318,6 @@ if uploaded_files:
     ):
         st.markdown("---")
         st.markdown("### 🤖 KAN-YOLOv8 Detection Results")
-
         prog = st.progress(0, text="Starting KAN-YOLOv8 detection...")
         results = []
 
@@ -336,7 +343,6 @@ if uploaded_files:
             })
 
         prog.empty()
-
         tot_frac  = sum(len(r['fractures']) for r in results)
         imgs_frac = sum(1 for r in results if r['fractures'])
         tot_finds = sum(len(r['dets']) for r in results)
